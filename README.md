@@ -24,17 +24,22 @@ Use the require function.  If require() retuns false the package has not been in
 packages installed are "data.table" and "reshape2".
 
 Create a vector with the values of activity levels
+
 ...
   activity_labels <- read.table("activity_labels.txt")[,2]
 ...
+
 Create a vector with the data column names
+
 ...
   features <- read.table("features.txt")[,2]
 ...
+
 Extract only the measurements on the mean and standard deviation for each measurement. Create a vector of TRUE / FALSE that determines which observation to extract.  This will be only the ones that have 'mean' and 'std' in their names.
 extract_features <- grepl("mean|std", features)
 
 Load the data and process X_test & y_test data.
+
 ...
   X_test <- read.table("./test/X_test.txt")
 
@@ -44,11 +49,15 @@ Load the data and process X_test & y_test data.
 
   names(X_test) = features
 ...
+
 Extract only the measurements of the mean and standard deviation for each measurement.
+
 ...
   X_test = X_test[,extract_features]
 ...
+
 Load activity labels
+
 ...
   y_test[,2] = activity_labels[y_test[,1]]
 
@@ -56,11 +65,15 @@ Load activity labels
 
   names(subject_test) = "subject"
 ...
+
 Bind data
+
 ...
 test_data <- cbind(as.data.table(subject_test), y_test, X_test)
 ...
+
 Load and process X_train & y_train data.
+
 ...
 X_train <- read.table("./train/X_train.txt")
 
@@ -70,11 +83,15 @@ subject_train <- read.table("./train/subject_train.txt")
 
 names(X_train) = features
 ...
+
 Extract only the measurements on the mean and standard deviation for each measurement.
+
 ...
 X_train = X_train[,extract_features]
 ...
+
 Load activity data
+
 ...
 y_train[,2] = activity_labels[y_train[,1]]
 
@@ -84,10 +101,13 @@ names(subject_train) = "subject"
 ...
 
 Bind data
+
 ...
 train_data <- cbind(as.data.table(subject_train), y_train, X_train)
 ...
+
 Merge test and train data
+
 ...
 data = rbind(test_data, train_data)
 
@@ -97,12 +117,15 @@ data_labels = setdiff(colnames(data), id_labels)
 
 melt_data      = melt(data, id = id_labels, measure.vars = data_labels)
 ...
+
 Apply mean function to dataset using dcast function
+
 ...
 tidy_data   = dcast(melt_data, subject + Activity_Label ~ variable, mean)
 
 write.table(tidy_data, file = "./tidy_data.txt", row.names = FALSE)
 ...
+
 ##Code book 
 
 The code book
