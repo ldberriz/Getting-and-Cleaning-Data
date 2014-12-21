@@ -1,26 +1,24 @@
-## Load the appropriate packages
-if (!require("data.table")) {     ## if require() retuns false pkg not installed.
+if (!require("data.table")) {
   install.packages("data.table")
 }
 
-if (!require("reshape2")) {       ## Ditto
+if (!require("reshape2")) {
   install.packages("reshape2")
 }
 
-require("data.table")             ## Load the pkgs
+require("data.table")
 require("reshape2")
 
-# Create a vector with the values of activity levels
+# Load: activity labels
 activity_labels <- read.table("activity_labels.txt")[,2]
 
-# Create a vector with the data column names
+# Load: data column names
 features <- read.table("features.txt")[,2]
 
 # Extract only the measurements on the mean and standard deviation for each measurement.
-# Create a vector of T / F that determines which observation to extract.
 extract_features <- grepl("mean|std", features)
 
-# Load the data and process X_test & y_test data.
+# Load and process X_test & y_test data.
 X_test <- read.table("./test/X_test.txt")
 y_test <- read.table("./test/y_test.txt")
 subject_test <- read.table("./test/subject_test.txt")
@@ -67,5 +65,5 @@ melt_data      = melt(data, id = id_labels, measure.vars = data_labels)
 # Apply mean function to dataset using dcast function
 tidy_data   = dcast(melt_data, subject + Activity_Label ~ variable, mean)
 
-write.table(tidy_data, file = "./tidy_data.txt", row.names = FALSE)
+write.table(tidy_data, file = "./tidy_data.txt")
 
