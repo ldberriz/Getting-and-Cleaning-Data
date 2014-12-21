@@ -1,8 +1,6 @@
 Getting-and-Cleaning-Data
 =========================
 
-# Getting and Cleaning Data Course Project
-
 ## How does the script work?
 
 R script run_analysis.R does the following: 
