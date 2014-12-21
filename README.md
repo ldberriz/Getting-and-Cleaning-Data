@@ -1,7 +1,8 @@
 Getting-and-Cleaning-Data
 =========================
+## Script
 
-## How does the script work?
+### How does the script work?
 
 R script run_analysis.R does the following: 
 
