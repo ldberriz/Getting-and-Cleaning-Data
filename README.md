@@ -26,9 +26,9 @@ packages installed are "data.table" and "reshape2".
 Create a vector with the values of activity levels
 ```
 activity_labels <- read.table("activity_labels.txt")[,2]
-
+```
 Create a vector with the data column names
-
+```
 features <- read.table("features.txt")[,2]
 ```
 Extract only the measurements on the mean and standard deviation for each measurement. Create a vector of TRUE / FALSE that determines which observation to extract.  This will be only the ones that have 'mean' and 'std' in their names.
