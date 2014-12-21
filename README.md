@@ -17,11 +17,13 @@ R script run_analysis.R does the following:
 
 ## Script description
 
-### Load the appropriate packages
+Load the appropriate packages
+
 Use the require function.  If require() retuns false the package has not been installed and should be ibnstalled.  
 packages installed are "data.table" and "reshape2".
 
-### Create a vector with the values of activity levels
+Create a vector with the values of activity levels
+
 activity_labels <- read.table("activity_labels.txt")[,2]
 
 ### Create a vector with the data column names
