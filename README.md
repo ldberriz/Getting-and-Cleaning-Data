@@ -27,8 +27,7 @@ activity_labels <- read.table("activity_labels.txt")[,2]
 ### Create a vector with the data column names
 features <- read.table("features.txt")[,2]
 
-### Extract only the measurements on the mean and standard deviation for each measurement.
-### Create a vector of T / F that determines which observation to extract.
+### Extract only the measurements on the mean and standard deviation for each measurement. Create a vector of TRUE / FALSE that determines which observation to extract.  This will be only the ones that have 'mean' and 'std' in their names.
 extract_features <- grepl("mean|std", features)
 
 ### Load the data and process X_test & y_test data.
@@ -40,7 +39,7 @@ subject_test <- read.table("./test/subject_test.txt")
 
 names(X_test) = features
 
-### Extract only the measurements on the mean and standard deviation for each measurement.
+### Extract only the measurements of the mean and standard deviation for each measurement.
 X_test = X_test[,extract_features]
 
 ### Load activity labels
