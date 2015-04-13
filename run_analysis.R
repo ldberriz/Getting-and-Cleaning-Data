@@ -10,9 +10,6 @@ if (!require("reshape2")) {
 require("data.table")
 require("reshape2")
 
-# change to my directory
-## setwd("C:/Users/LuisD/Documents/Coursera/Getting and Cleaning Data/getdata-projectfiles-UCI HAR Dataset/UCI HAR Dataset")
-
 # Create a vector with the values of activity levels
 activity_labels <- read.table("activity_labels.txt")[,2]
 
